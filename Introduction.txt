@@ -1,0 +1,3 @@
+Ivy
+- Ivy is a code name of angular compiler. its work is to convert Angular code into the browser understandable code
+- AoT(Aheade of time) is used to compile the angular code for development as well as production
