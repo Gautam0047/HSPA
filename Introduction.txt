@@ -1,3 +1,8 @@
 Ivy
 - Ivy is a code name of angular compiler. its work is to convert Angular code into the browser understandable code
 - AoT(Aheade of time) is used to compile the angular code for development as well as production
+
+- whenever we want to acces any files outside app folder then we must define it in asset property of angular.json file
+
+"strictPropertyInitialization": false
+"suppressImplicitAnyIndexErrors": true           in tsconfig.json

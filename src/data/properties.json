@@ -1,0 +1,61 @@
+[
+  {
+  "Id" : 1,
+  "Name" : "Birla house",
+  "Type" : "House",
+  "Price" : 12000,
+  "SellRent": 1,
+  "Image": "img1"
+
+},
+{
+  "Id" : 2,
+  "Name" : "avd house",
+  "Type" : "villa",
+  "Price" : 12000,
+  "SellRent": 2,
+  "Image": "img2"
+},
+{
+  "Id" : 3,
+  "Name" : "eryer house",
+  "Type" : "House",
+  "Price" : 12000,
+  "SellRent": 1,
+  "Image": "img3"
+
+},
+{
+  "Id" : 1,
+  "Name" : "qwe house",
+  "Type" : "vilaa",
+  "Price" : 12000,
+  "SellRent": 2,
+  "Image": "img4"
+
+},
+{
+  "Id" : 1,
+  "Name" : "uyiuy house",
+  "Type" : "House",
+  "Price" : 12000,
+  "SellRent": 1,
+  "Image": "img5"
+},
+{
+  "Id" : 1,
+  "Name" : "bmh house",
+  "Type" : "villa",
+  "Price" : 12000,
+  "SellRent": 2,
+  "Image": "img6"
+
+},
+{
+  "Id" : 1,
+  "Name" : "hhh house",
+  "Type" : "house",
+  "Price" : 12000,
+  "SellRent": 1
+}
+]
