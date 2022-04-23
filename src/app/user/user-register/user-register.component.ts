@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { User } from 'src/app/model/user';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class UserRegisterComponent implements OnInit {
   user: User;
   userSubmitted: boolean;
 
-  constructor(private fb: FormBuilder, private userservice: UserService) { }
+  constructor(private fb: FormBuilder, private userservice: UserService, private alertyfy: AlertifyService) { }
 
   ngOnInit(): void {
     // Using Form Group
@@ -80,6 +81,10 @@ export class UserRegisterComponent implements OnInit {
       this.userservice.addUser(this.user);
       this.registrationForm.reset();
       this.userSubmitted = false;
+      this.alertyfy.success("Successfully Registered the User");
+    }
+    else{
+      this.alertyfy.error('Kindly Provide the required fields');
     }
   }
 

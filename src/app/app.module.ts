@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserService } from './services/user.service';
+import { AlertifyService } from './services/alertify.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { UserService } from './services/user.service';
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [HousingService, UserService],
+  providers: [HousingService, UserService, AlertifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
