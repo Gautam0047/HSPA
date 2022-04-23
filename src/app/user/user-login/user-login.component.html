@@ -1,1 +1,29 @@
-<p>user-login works!</p>
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+        Login
+      </div>
+      <div class="card-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm)">
+          <div class="form-group col-12">
+            <label>Name</label>
+            <input class="form-control" formControlName="userName">
+            <span *ngIf="!this.loginForm.get('userName')?.valid && this.loginForm.get('userName')?.touched" class="error-block">Please enter Username</span>
+          </div>
+
+          <div class="form-group col-12">
+            <label>Password</label>
+            <input class="form-control" formControlName="password">
+            <span *ngIf="!this.loginForm.get('password')?.valid && this.loginForm.get('password')?.touched" class="error-block">Please enter Password</span>
+          </div>
+
+          <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary m-2" [disabled]="!loginForm.valid">Submit</button>
+            <button type="button" class="btn btn-secondary m-2">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

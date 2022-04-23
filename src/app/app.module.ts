@@ -15,6 +15,10 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserService } from './services/user.service';
 import { AlertifyService } from './services/alertify.service';
+import { AuthService } from './services/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -32,9 +36,12 @@ import { AlertifyService } from './services/alertify.service';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [HousingService, UserService, AlertifyService],
+  providers: [HousingService, UserService, AlertifyService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
