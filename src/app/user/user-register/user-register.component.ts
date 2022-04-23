@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-register',
@@ -9,9 +11,10 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 export class UserRegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
-  user: any = {};
+  user: User;
+  userSubmitted: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private userservice: UserService) { }
 
   ngOnInit(): void {
     // Using Form Group
@@ -68,9 +71,24 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.registrationForm.valid);
-    this.user = Object.assign(this.user, this.registrationForm);   // using this method we can assign one object values to the other object
-    localStorage.setItem('Users', JSON.stringify(this.user));
+    this.userSubmitted = true;
+    if(this.registrationForm.valid){
+      console.log(this.registrationForm.valid);
+      console.log(this.registrationForm);
+      //this.user = Object.assign(this.user, this.registrationForm);   // using this method we can assign one object values to the other object
+      this.userData();
+      this.userservice.addUser(this.user);
+      this.registrationForm.reset();
+      this.userSubmitted = false;
+    }
   }
 
+  userData(): User{
+    return this.user = {
+      userName : this.userName.value,
+      email : this.email.value,
+      mobile : this.mobile.value,
+      password : this.password.value
+    }
+  }
 }
