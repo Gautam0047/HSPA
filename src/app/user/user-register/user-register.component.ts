@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user-register',
@@ -9,10 +9,14 @@ import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators }
 export class UserRegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
+  user: any = {};
 
-  constructor() { }
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    // Using Form Group
+
+    /*
     this.registrationForm = new FormGroup({
       userName: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -20,6 +24,20 @@ export class UserRegisterComponent implements OnInit {
       confirmPassword: new FormControl(null, Validators.required),
       mobile: new FormControl(null, [Validators.required, Validators.maxLength(10)]),
     },this.passWordMatchingValidator)
+    */
+
+    // Using FormBuilder
+    this.createRegistrationform();
+  }
+
+  createRegistrationform(){
+    this.registrationForm = this.fb.group({
+      userName: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
+      password: [null, [Validators.required, Validators.minLength(8)]],
+      confirmPassword: [null, Validators.required],
+      mobile: [null, [Validators.required, Validators.maxLength(10)]],
+    }, {Validators: this.passWordMatchingValidator});
   }
 
   passWordMatchingValidator(fc: AbstractControl): ValidationErrors | null{
@@ -50,7 +68,9 @@ export class UserRegisterComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.registrationForm.valid)
+    console.log(this.registrationForm.valid);
+    this.user = Object.assign(this.user, this.registrationForm);   // using this method we can assign one object values to the other object
+    localStorage.setItem('Users', JSON.stringify(this.user));
   }
 
 }
