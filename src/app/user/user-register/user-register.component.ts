@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/model/user';
 import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,10 +13,11 @@ import { UserService } from 'src/app/services/user.service';
 export class UserRegisterComponent implements OnInit {
 
   registrationForm: FormGroup;
-  user: User;
+  user: User;                          // form data will be assign to this field
   userSubmitted: boolean;
 
-  constructor(private fb: FormBuilder, private userservice: UserService, private alertyfy: AlertifyService) { }
+  constructor(private fb: FormBuilder, private userservice: UserService,
+    private alertyfy: AlertifyService, private router: Router) { }
 
   ngOnInit(): void {
     // Using Form Group
@@ -44,13 +46,13 @@ export class UserRegisterComponent implements OnInit {
     }, {Validators: this.passWordMatchingValidator});
   }
 
+  // this is customn validator function
   passWordMatchingValidator(fc: AbstractControl): ValidationErrors | null{
-    return fc.get('password')?.value === fc.get('confirmPassword')?.value ? null :
-    {
-      notmatched: true
-    }
+    return fc.get('password')?.value === fc.get('confirmPassword')?.value ? null : { notmatched: true }
+
   }
 
+  // so these are the getter(property) which returns Different FormControl of the form
   get userName(){
     return this.registrationForm.get('userName') as FormControl;
   }
@@ -74,13 +76,13 @@ export class UserRegisterComponent implements OnInit {
   onSubmit(){
     this.userSubmitted = true;
     if(this.registrationForm.valid){
-      console.log(this.registrationForm.valid);
       console.log(this.registrationForm);
       //this.user = Object.assign(this.user, this.registrationForm);   // using this method we can assign one object values to the other object
       this.userData();
       this.userservice.addUser(this.user);
       this.registrationForm.reset();
       this.userSubmitted = false;
+      this.router.navigate(['/']);
       this.alertyfy.success("Successfully Registered the User");
     }
     else{
@@ -95,5 +97,9 @@ export class UserRegisterComponent implements OnInit {
       mobile : this.mobile.value,
       password : this.password.value
     }
+  }
+
+  onCancle(){
+    this.router.navigate(['/']);
   }
 }

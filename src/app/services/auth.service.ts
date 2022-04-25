@@ -10,7 +10,6 @@ authUser(user: any){
   if(localStorage.getItem('Users')){
     UserArray =  JSON.parse(localStorage.getItem('Users') as string);
   }
-  return UserArray.find((x: { userName: any; password: any; }) => x.userName === user.userName && x.password === user.password)
+  return Array.isArray(UserArray) ? UserArray.find(((x: { userName: any; password: any; }) => x.userName === user.userName && x.password === user.password)) : false;
 }
-
 }

@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class UserLoginComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm: FormGroup;                      // field of FormGroup type. so in teplate file the [FormGroup]="loginForm"
 
   constructor(private authservice: AuthService,
     private alertyfy: AlertifyService,
@@ -40,6 +40,10 @@ export class UserLoginComponent implements OnInit {
     else{
       this.alertyfy.error("login failed");
     }
+  }
+
+  onCancle(){
+    this.router.navigate(['/']);
   }
 
 }

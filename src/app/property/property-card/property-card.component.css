@@ -1,3 +1,6 @@
+
+/* here we are saying that whenver we hower the mouse on the img (html tag) of a card class(parent element) then
+these style will be applied on that img (hower the mouse over img here)  */
 .card:hover img {
   transform: scale(1.2,1.2);
   transition-duration: 300ms;
@@ -6,6 +9,7 @@
   height: 250px;
 }
 
+/* this style will be applied to the img tag whose parent element class is card*/
 .card img {
   transform: scale(1,1);
   transition-duration: 300ms;
@@ -36,3 +40,19 @@
 .animate{
   transition: all 0.3s ease-in-out;
 }
+
+.border{
+  border: 1px solid dodgerblue;
+}
+
+.card-body h1{
+  font-family: fantasy;
+  color: dodgerblue;
+}
+
+.font-highlight{
+  font-style: italic;
+  color: red;
+}
+
+

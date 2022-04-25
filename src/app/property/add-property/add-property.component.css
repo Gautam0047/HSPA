@@ -1,9 +1,8 @@
-.card{
-  border: 1px solid dodgerblue;
-}
-
 .card-header{
   background-color: dodgerblue;
+  writing-mode: horizontal-tb;;
+  word-break: break-word;
+  max-height: 35%;
 }
 
 .photo-control{
@@ -12,6 +11,10 @@
   text-align: center;
   border: 1px dashed blue;
   margin: 5px;
+}
+
+.card{
+  border: 1px solid dodgerblue;
 }
 
 

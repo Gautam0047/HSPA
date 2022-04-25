@@ -12,8 +12,9 @@ export class PropertyDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    // In below we are feching the route parameter called 'id'
     this.route.params.subscribe(param =>{
-      this.propertyId = +param["id"];
+      this.propertyId = +param["id"];                // + means we are type casting it to number
     })
   }
 

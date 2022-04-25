@@ -1,17 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<!-- copying from bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">  <!--we added fixed-top class to fixed navbar at top-->
   <div class="container-fluid">
+
     <a class="navbar-brand" href="#">HSPA</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
           <a class="nav-link" [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" aria-current="page" routerLink="/">Buy</a>
         </li>
+        <!-- [routerLinkActiveOptions]="{exact: true}" means when exactly the route match with link then only it gets active(highlighted)  -->
+        <!-- routerLinkActive="active" means highlight the link when you click on link -->
+
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/rent-property">Rent</a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" routerLink="/add-property" routerLinkActive="router-link-active" >List Property (free)</a>
         </li>
@@ -19,17 +28,19 @@
 
       <div>
         <ul class="nav navbar-nav">
+
           <li *ngIf="!loggedIn()" class="nav-item">
             <a class="nav-link" routerLink="user/register" routerLinkActive="active">Register</a>
           </li>
+
           <li *ngIf="!loggedIn()" class="nav-item">
             <a class="nav-link" routerLink="user/login" routerLinkActive="active">Login</a>
           </li>
-          <!-- <li *ngIf="loogedIn()" class="nav-item">
-            <a class="nav-link" (click)="onLogout()">Logout</a>
-          </li> -->
+          <!-- above two link will appear only if user is not logged in -->
+          <!-- below div will only shown when user is logged in -->
 
-          <div style="margin-right: 30px;" *ngIf="loggedIn()" class="dropdown" dropdown>
+          <!-- coppied from ngx bootstrap -->
+          <div style="margin-right: 30px;" *ngIf="loggedIn()" class="dropdown" dropdown>   <!--dropdown directive can only be used if we have installed ngx bootstrap and given the reference in module file-->
             <a class="dropdown-toggle text-light" dropdownToggle (click)="false">
               Welcome {{loggedInUser}}
             </a>

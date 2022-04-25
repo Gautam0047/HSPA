@@ -6,8 +6,14 @@
   color: red
 }
 
+/* below style for  */
+/* here we are specifayng that these style is applied to a label which having a ng-reflect-btn-radio attribute */
+/* ng-reflect-btn-radio attribute is dynamically added by angular with the help of ngx bootstrap at run time */
+/* here '>' means label is a direct child of the parent element  */
 .btn-group > label[ng-reflect-btn-radio]{
   border-radius: 44px;
   padding:0 15px;
   line-height: 30px;
+  margin-right: 5px;
 }
+
